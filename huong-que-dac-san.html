@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quý Hiệp — Đặc Sản Ba Miền Chính Gốc</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#1C1A18;
+    --lacquer:#A6321B;
+    --lacquer-dark:#7C2313;
+    --gold:#C9A227;
+    --gold-soft:#E4C766;
+    --paper:#F3EAD9;
+    --paper-2:#EAE0CB;
+    --jade:#3F5B4A;
+    --clay:#C97B4A;
+    --line: rgba(28,26,24,0.12);
+    --shadow: 0 12px 30px rgba(28,26,24,0.14);
+    --radius: 4px;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Inter', sans-serif;
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+  }
+  img{max-width:100%; display:block;}
+  a{color:inherit; text-decoration:none;}
+  ul{list-style:none;}
+  .display{font-family:'Be Vietnam Pro', sans-serif; font-weight:800; letter-spacing:-0.01em;}
+  .wrap{max-width:1180px; margin:0 auto; padding:0 24px;}
+  .eyebrow{
+    font-size:12.5px; font-weight:700; letter-spacing:.14em; text-transform:uppercase;
+    color:var(--lacquer); display:inline-flex; align-items:center; gap:8px;
+  }
+  .eyebrow::before{content:''; width:16px; height:1.5px; background:var(--lacquer); display:inline-block;}
+  .btn{
+    display:inline-flex; align-items:center; gap:8px; padding:14px 26px; border-radius:var(--radius);
+    font-weight:700; font-size:14.5px; cursor:pointer; border:1.5px solid transparent; transition:transform .15s ease, box-shadow .15s ease;
+  }
+  .btn:hover{transform:translateY(-2px);}
+  .btn-primary{background:var(--lacquer); color:var(--paper); box-shadow:0 8px 20px rgba(166,50,27,.32);}
+  .btn-primary:hover{box-shadow:0 12px 26px rgba(166,50,27,.4);}
+  .btn-ghost{border-color:var(--ink); color:var(--ink);}
+  .btn-ghost:hover{background:var(--ink); color:var(--paper);}
+  .btn-gold{background:var(--gold); color:var(--ink); box-shadow:0 8px 20px rgba(201,162,39,.35);}
+
+  /* ===== Top bar ===== */
+  .topbar{
+    background:var(--ink); color:var(--paper-2); font-size:12.5px; letter-spacing:.02em;
+  }
+  .topbar .wrap{display:flex; justify-content:space-between; align-items:center; height:36px; gap:16px; overflow:hidden;}
+  .topbar span{opacity:.85; white-space:nowrap;}
+  .topbar .hotline{color:var(--gold-soft); font-weight:600;}
+
+  /* ===== Header ===== */
+  header.site{
+    position:sticky; top:0; z-index:40; background:rgba(243,234,217,.92); backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-row{display:flex; align-items:center; justify-content:space-between; height:78px; gap:20px;}
+  .brand{display:flex; align-items:center; gap:10px; font-family:'Be Vietnam Pro'; font-weight:800; font-size:20px;}
+  .brand-mark{width:38px; height:38px; flex-shrink:0;}
+  .brand small{display:block; font-family:'Inter'; font-weight:500; font-size:11px; letter-spacing:.05em; color:var(--jade); text-transform:uppercase;}
+  nav.main{display:flex; gap:30px;}
+  nav.main a{font-size:14.5px; font-weight:600; position:relative; padding:6px 0;}
+  nav.main a::after{content:''; position:absolute; left:0; bottom:0; width:0; height:2px; background:var(--lacquer); transition:width .2s;}
+  nav.main a:hover::after{width:100%;}
+  .nav-actions{display:flex; align-items:center; gap:18px;}
+  .icon-btn{display:flex; align-items:center; gap:6px; font-weight:600; font-size:14px; cursor:pointer;}
+  .cart-count{background:var(--lacquer); color:var(--paper); font-size:11px; font-weight:700; border-radius:50%; width:18px; height:18px; display:inline-flex; align-items:center; justify-content:center;}
+  .burger{display:none; flex-direction:column; gap:5px; cursor:pointer;}
+  .burger span{width:24px; height:2px; background:var(--ink);}
+
+  /* ===== Hero ===== */
+  .hero{position:relative; overflow:hidden; padding:64px 0 40px;}
+  .hero .wrap{display:grid; grid-template-columns:1.05fr .95fr; gap:48px; align-items:center;}
+  .hero h1{font-size:clamp(34px,4.6vw,58px); line-height:1.05; margin:16px 0 20px;}
+  .hero h1 em{font-style:normal; color:var(--lacquer);}
+  .hero p.lede{font-size:17px; color:#454138; max-width:460px; margin-bottom:28px;}
+  .hero-ctas{display:flex; gap:14px; flex-wrap:wrap; margin-bottom:34px;}
+  .trust-row{display:flex; gap:26px; flex-wrap:wrap;}
+  .trust-row div{font-size:13px; font-weight:600; display:flex; align-items:center; gap:8px; color:#3a362f;}
+  .trust-row svg{width:18px; height:18px; color:var(--jade); flex-shrink:0;}
+
+  .hero-art{position:relative; display:flex; align-items:center; justify-content:center;}
+  .hero-art .plate{width:100%; max-width:440px; aspect-ratio:1/1; border-radius:50%; background:radial-gradient(circle at 32% 28%, #fff7e8, var(--paper-2) 60%); box-shadow: inset 0 0 0 10px rgba(201,162,39,.25), var(--shadow); display:flex; align-items:center; justify-content:center; position:relative;}
+  .seal{
+    position:absolute; top:-14px; right:-6px; width:118px; height:118px; border-radius:50%;
+    background:var(--lacquer); color:var(--gold-soft); display:flex; align-items:center; justify-content:center;
+    box-shadow:0 10px 24px rgba(166,50,27,.4); transform:rotate(-14deg); border:2px dashed rgba(228,199,102,.6);
+  }
+  .seal-inner{text-align:center; font-family:'Be Vietnam Pro'; font-weight:800; font-size:13px; line-height:1.25; letter-spacing:.02em;}
+  .seal-inner .big{font-size:19px; display:block; margin-bottom:2px;}
+
+  /* ===== Voucher strip ===== */
+  .voucher-strip{background:var(--jade); color:var(--paper);}
+  .voucher-strip .wrap{display:flex; gap:0; overflow-x:auto; padding:0;}
+  .voucher{
+    flex:1; min-width:230px; display:flex; align-items:center; gap:14px; padding:18px 22px;
+    border-right:1px dashed rgba(243,234,217,.3);
+  }
+  .voucher:last-child{border-right:none;}
+  .voucher .code{
+    font-family:'Be Vietnam Pro'; font-weight:800; background:var(--paper); color:var(--jade);
+    padding:6px 10px; border-radius:3px; font-size:13px; letter-spacing:.03em; white-space:nowrap;
+  }
+  .voucher .desc{font-size:13px; opacity:.92;}
+
+  /* ===== Section heading ===== */
+  .section{padding:64px 0;}
+  .section-head{display:flex; align-items:flex-end; justify-content:space-between; margin-bottom:32px; gap:20px; flex-wrap:wrap;}
+  .section-head h2{font-size:clamp(24px,3vw,34px); margin-top:8px;}
+  .see-all{font-weight:700; font-size:14px; border-bottom:2px solid var(--gold); padding-bottom:2px;}
+
+  /* ===== Categories ===== */
+  .cat-grid{display:grid; grid-template-columns:repeat(6,1fr); gap:16px;}
+  .cat-card{
+    background:#fff; border:1px solid var(--line); border-radius:var(--radius); padding:22px 14px; text-align:center;
+    transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease; cursor:pointer;
+  }
+  .cat-card:hover{transform:translateY(-4px); box-shadow:var(--shadow); border-color:var(--gold);}
+  .cat-card .cat-icon{width:46px; height:46px; margin:0 auto 12px; color:var(--lacquer);}
+  .cat-card span{font-size:13px; font-weight:700; display:block;}
+  .cat-card small{font-size:11px; color:#8a8477;}
+
+  /* ===== Flash sale ===== */
+  .flash{background:var(--jade); color:var(--paper);}
+  .flash .section-head h2{color:var(--paper);}
+  .timer{display:flex; gap:8px; align-items:center;}
+  .timer .box{background:rgba(243,234,217,.08); border:1px solid rgba(243,234,217,.2); border-radius:3px; padding:8px 12px; font-family:'Be Vietnam Pro'; font-weight:800; font-size:18px; min-width:46px; text-align:center;}
+  .timer .colon{opacity:.5; font-weight:700;}
+  .timer-label{font-size:11px; text-transform:uppercase; letter-spacing:.08em; color:var(--gold-soft); margin-bottom:6px; display:block;}
+
+  .prod-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:20px;}
+  .prod-card{
+    background:#fff; color:var(--ink); border-radius:var(--radius); overflow:hidden; position:relative;
+    box-shadow:0 4px 14px rgba(0,0,0,.08); transition:transform .18s ease;
+  }
+  .prod-card:hover{transform:translateY(-5px);}
+  .prod-thumb{
+    aspect-ratio:4/3; background:linear-gradient(135deg,var(--paper-2),var(--paper)); position:relative;
+    display:flex; align-items:center; justify-content:center; overflow:hidden;
+  }
+  .prod-thumb img{width:100%; height:100%; object-fit:cover;}
+  .prod-thumb svg{width:56%; height:56%; color:var(--clay); opacity:.85;}
+  .prod-thumb .ph-fallback{font-size:12px; color:#a89f8c; font-weight:600;}
+  .badge-off{position:absolute; top:10px; left:10px; background:var(--lacquer); color:#fff; font-size:11px; font-weight:800; padding:4px 8px; border-radius:3px;}
+  .badge-region{position:absolute; top:10px; right:10px; background:rgba(28,26,24,.75); color:var(--gold-soft); font-size:10.5px; font-weight:600; padding:4px 8px; border-radius:3px;}
+  .prod-body{padding:14px 16px 16px;}
+  .prod-body h3{font-size:14.5px; font-weight:700; margin-bottom:6px; line-height:1.3; min-height:38px;}
+  .prod-rating{font-size:12px; color:#8a8477; margin-bottom:8px;}
+  .prod-rating strong{color:var(--gold); }
+  .price-row{display:flex; align-items:baseline; gap:8px; margin-bottom:12px;}
+  .price-now{font-weight:800; color:var(--lacquer); font-size:16px;}
+  .price-old{font-size:12.5px; color:#a29c8c; text-decoration:line-through;}
+  .add-btn{
+    width:100%; padding:10px; border-radius:3px; border:1.5px solid var(--ink); background:transparent; color:var(--ink);
+    font-weight:700; font-size:13px; cursor:pointer; transition:all .15s ease;
+  }
+  .add-btn:hover{background:var(--ink); color:var(--paper);}
+
+  /* ===== Story band ===== */
+  .story{background:var(--paper-2);}
+  .story .wrap{display:grid; grid-template-columns:.9fr 1.1fr; gap:56px; align-items:center;}
+  .story-art{aspect-ratio:1/1.1; border-radius:var(--radius); background:linear-gradient(160deg,var(--clay),var(--lacquer-dark)); position:relative; overflow:hidden; box-shadow:var(--shadow);}
+  .story-art svg{position:absolute; inset:0; width:70%; height:70%; margin:auto; color:rgba(243,234,217,.9);}
+  .story h2{font-size:clamp(24px,3vw,32px); margin:14px 0 18px;}
+  .story p{color:#4a453b; margin-bottom:14px; max-width:520px;}
+  .stat-row{display:flex; gap:36px; margin-top:26px; flex-wrap:wrap;}
+  .stat-row div strong{font-family:'Be Vietnam Pro'; font-size:28px; display:block; color:var(--lacquer);}
+  .stat-row div span{font-size:12.5px; color:#5a5548;}
+
+  /* ===== Blog ===== */
+  .blog-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:24px;}
+  .blog-card{background:#fff; border-radius:var(--radius); overflow:hidden; box-shadow:0 4px 14px rgba(0,0,0,.06);}
+  .blog-thumb{aspect-ratio:16/10; background:linear-gradient(135deg,var(--paper-2),#e3d8ba); display:flex; align-items:center; justify-content:center;}
+  .blog-thumb svg{width:34%; color:var(--jade); opacity:.7;}
+  .blog-body{padding:18px 20px 20px;}
+  .blog-tag{font-size:11px; font-weight:700; color:var(--jade); text-transform:uppercase; letter-spacing:.06em;}
+  .blog-body h3{font-size:16px; margin:8px 0 10px; line-height:1.35;}
+  .blog-body p{font-size:13.5px; color:#78725f;}
+
+  /* ===== Newsletter ===== */
+  .newsletter{background:var(--lacquer); color:var(--paper); text-align:center;}
+  .newsletter h2{font-size:clamp(22px,2.8vw,30px); margin:10px 0 10px;}
+  .newsletter p{opacity:.85; max-width:480px; margin:0 auto 26px;}
+  .nl-form{display:flex; max-width:440px; margin:0 auto; gap:10px;}
+  .nl-form input{flex:1; padding:13px 16px; border-radius:3px; border:none; font-size:14px; font-family:'Inter';}
+  .nl-form button{border-radius:3px;}
+
+  /* ===== Footer ===== */
+  footer{background:var(--ink); color:var(--paper-2); padding:56px 0 0;}
+  .foot-grid{display:grid; grid-template-columns:1.4fr 1fr 1fr 1.1fr; gap:40px; padding-bottom:44px; border-bottom:1px solid rgba(243,234,217,.12);}
+  .foot-brand .brand{color:var(--paper);}
+  .foot-brand p{font-size:13.5px; color:#a8a196; margin:14px 0 18px; max-width:280px;}
+  .foot-col h4{font-size:13px; text-transform:uppercase; letter-spacing:.08em; color:var(--gold-soft); margin-bottom:16px;}
+  .foot-col li{margin-bottom:10px; font-size:13.5px; color:#c9c2b3;}
+  .foot-col li a:hover{color:var(--gold-soft);}
+  .foot-bottom{display:flex; justify-content:space-between; align-items:center; padding:22px 0; font-size:12.5px; color:#8a8477; flex-wrap:wrap; gap:10px;}
+  .socials{display:flex; gap:12px;}
+  .socials a{width:34px; height:34px; border:1px solid rgba(243,234,217,.2); border-radius:50%; display:flex; align-items:center; justify-content:center;}
+  .socials svg{width:15px; height:15px;}
+
+  /* ===== Order modal ===== */
+  .modal-overlay{
+    position:fixed; inset:0; background:rgba(28,26,24,.55); z-index:100;
+    display:none; align-items:center; justify-content:center; padding:20px;
+  }
+  .modal-overlay.open{display:flex;}
+  .modal{
+    background:var(--paper); border-radius:6px; width:100%; max-width:440px; max-height:90vh; overflow-y:auto;
+    box-shadow:0 24px 60px rgba(0,0,0,.3); position:relative;
+  }
+  .modal-head{padding:22px 24px 6px; display:flex; justify-content:space-between; align-items:flex-start;}
+  .modal-head h3{font-family:'Be Vietnam Pro'; font-weight:800; font-size:20px;}
+  .modal-close{cursor:pointer; font-size:20px; line-height:1; color:#8a8477; padding:4px;}
+  .modal-close:hover{color:var(--ink);}
+  .modal-product{padding:0 24px; font-size:13.5px; color:var(--lacquer); font-weight:700; margin-bottom:6px;}
+  .modal-body{padding:10px 24px 24px; display:flex; flex-direction:column; gap:12px;}
+  .modal-body label{font-size:12.5px; font-weight:700; color:#4a453b; margin-bottom:4px; display:block;}
+  .modal-body input, .modal-body textarea{
+    width:100%; padding:11px 13px; border:1.5px solid var(--line); border-radius:4px; font-family:'Inter'; font-size:14px;
+    background:#fff;
+  }
+  .modal-body input:focus, .modal-body textarea:focus{outline:none; border-color:var(--gold);}
+  .modal-body textarea{resize:vertical; min-height:60px;}
+  .modal-submit{margin-top:6px; width:100%; justify-content:center;}
+  .form-status{font-size:13px; font-weight:600; padding:10px 12px; border-radius:4px; display:none;}
+  .form-status.show{display:block;}
+  .form-status.ok{background:rgba(63,91,74,.12); color:var(--jade);}
+  .form-status.err{background:rgba(166,50,27,.1); color:var(--lacquer);}
+
+  /* ===== Responsive ===== */
+  @media (max-width:980px){
+    .hero .wrap{grid-template-columns:1fr; gap:36px;}
+    .hero-art{order:-1;}
+    .cat-grid{grid-template-columns:repeat(3,1fr);}
+    .prod-grid{grid-template-columns:repeat(2,1fr);}
+    .story .wrap{grid-template-columns:1fr;}
+    .blog-grid{grid-template-columns:1fr;}
+    .foot-grid{grid-template-columns:1fr 1fr;}
+    nav.main{display:none;}
+    .burger{display:flex;}
+  }
+  @media (max-width:560px){
+    .cat-grid{grid-template-columns:repeat(2,1fr);}
+    .prod-grid{grid-template-columns:1fr 1fr;}
+    .nl-form{flex-direction:column;}
+    .foot-grid{grid-template-columns:1fr;}
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="wrap">
+    <span>🌾 Đặc sản chính gốc ba miền · Đóng gói hút chân không · Giao toàn quốc</span>
+    <span class="hotline">☎ 0909 123 456</span>
+  </div>
+</div>
+
+<header class="site">
+  <div class="wrap nav-row">
+    <a href="#" class="brand">
+      <svg class="brand-mark" viewBox="0 0 48 48" fill="none">
+        <circle cx="24" cy="24" r="23" fill="#A6321B"/>
+        <path d="M14 30c0-8 4.5-14 10-14s10 6 10 14" stroke="#F3EAD9" stroke-width="2.4" fill="none" stroke-linecap="round"/>
+        <ellipse cx="24" cy="30" rx="12" ry="3.2" fill="#F3EAD9"/>
+        <path d="M20 16c0-2.2 1.8-4 4-4s4 1.8 4 4" stroke="#E4C766" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+      <span>Quý Hiệp Store<small>Đặc sản quê nhà</small></span>
+    </a>
+    <nav class="main">
+      <a href="#danh-muc">Sản phẩm</a>
+      <a href="#flash-sale">Ưu đãi hôm nay</a>
+      <a href="#cau-chuyen">Câu chuyện</a>
+      <a href="#tin-tuc">Góc ẩm thực</a>
+      <a href="#lien-he">Liên hệ</a>
+    </nav>
+    <div class="nav-actions">
+      <div class="icon-btn">
+        <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+      </div>
+      <div class="icon-btn">
+        <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 6h15l-1.5 9h-12z"/><path d="M6 6L5 3H2"/><circle cx="9" cy="20" r="1"/><circle cx="18" cy="20" r="1"/></svg>
+        <span>Giỏ hàng</span><span class="cart-count">0</span>
+      </div>
+      <div class="burger"><span></span><span></span><span></span></div>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <div>
+      <span class="eyebrow">Từ bếp làng đến bàn ăn nhà bạn</span>
+      <h1 class="display">Đặc sản quê,<br><em>gói trọn</em> yêu thương</h1>
+      <p class="lede">Quý Hiệp tuyển chọn từng mẻ chả, hũ mắm, ché rượu từ các làng nghề lâu đời khắp ba miền — đóng gói cẩn thận, gửi thẳng đến tay bạn trong 24–48 giờ.</p>
+      <div class="hero-ctas">
+        <a href="#danh-muc" class="btn btn-primary">Khám phá sản phẩm →</a>
+        <a href="#" class="btn btn-ghost" onclick="openOrderModal('Combo quà biếu Tết'); return false;">Combo quà biếu Tết</a>
+      </div>
+      <div class="trust-row">
+        <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Nguồn gốc rõ ràng, có tem truy xuất</div>
+        <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Giao nhanh 24–48h toàn quốc</div>
+        <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Đổi trả trong 3 ngày</div>
+      </div>
+    </div>
+    <div class="hero-art">
+      <div class="plate">
+        <svg width="52%" height="52%" viewBox="0 0 100 100" fill="none">
+          <ellipse cx="50" cy="82" rx="34" ry="6" fill="rgba(28,26,24,.08)"/>
+          <path d="M32 30h36l-3 44a6 6 0 01-6 5.5H41a6 6 0 01-6-5.5z" fill="#C97B4A"/>
+          <path d="M30 30h40l-1.5 8h-37z" fill="#7C2313"/>
+          <rect x="46" y="14" width="8" height="18" rx="3" fill="#7C2313"/>
+        </svg>
+        <div class="seal">
+          <div class="seal-inner"><span class="big">100%</span>Chính gốc<br>làng nghề</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="voucher-strip">
+  <div class="wrap">
+    <div class="voucher"><span class="code">QUE50K</span><span class="desc">Giảm 50.000đ cho đơn từ 1.200.000đ</span></div>
+    <div class="voucher"><span class="code">QUE30K</span><span class="desc">Giảm 30.000đ cho đơn từ 800.000đ</span></div>
+    <div class="voucher"><span class="code">QUEMOI</span><span class="desc">Giảm 15% cho khách hàng lần đầu</span></div>
+  </div>
+</div>
+
+<section class="section" id="danh-muc">
+  <div class="wrap">
+    <div class="section-head">
+      <div><span class="eyebrow">Danh mục</span><h2 class="display">Chọn theo vùng miền</h2></div>
+      <a href="#" class="see-all">Xem tất cả sản phẩm →</a>
+    </div>
+    <div class="cat-grid">
+      <div class="cat-card"><svg class="cat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="4" y="9" width="16" height="10" rx="1.5"/><path d="M8 9V6a4 4 0 018 0v3"/></svg><span>Chả &amp; Nem</span><small>Bình Định, Huế</small></div>
+      <div class="cat-card"><svg class="cat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M7 3h10l1 6a6 6 0 01-12 0z"/><path d="M12 15v6"/><path d="M9 21h6"/></svg><span>Nước Mắm</span><small>Phan Thiết</small></div>
+      <div class="cat-card"><svg class="cat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 8l7-5 7 5-7 5z"/><path d="M5 8v8l7 5 7-5V8"/></svg><span>Bánh Tráng</span><small>Phú Yên</small></div>
+      <div class="cat-card"><svg class="cat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M9 3h6l1 5a4 4 0 01-8 0z"/><path d="M12 12v9"/></svg><span>Rượu Quê</span><small>Bàu Đá</small></div>
+      <div class="cat-card"><svg class="cat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="8"/><path d="M12 8v8M8 12h8"/></svg><span>Mứt &amp; Kẹo</span><small>Quảng Ngãi</small></div>
+      <div class="cat-card"><svg class="cat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 12c4-6 12-6 16 0"/><path d="M6 12v6h12v-6"/></svg><span>Trà &amp; Mật Ong</span><small>Tây Nguyên</small></div>
+    </div>
+  </div>
+</section>
+
+<section class="section flash" id="flash-sale">
+  <div class="wrap">
+    <div class="section-head">
+      <div><span class="eyebrow" style="color:var(--gold-soft)">Số lượng có hạn</span><h2 class="display">⚡ Ưu đãi trong ngày</h2></div>
+      <div>
+        <span class="timer-label">Kết thúc sau</span>
+        <div class="timer" id="countdown">
+          <div class="box" id="t-h">05</div><span class="colon">:</span>
+          <div class="box" id="t-m">42</div><span class="colon">:</span>
+          <div class="box" id="t-s">10</div>
+        </div>
+      </div>
+    </div>
+    <div class="prod-grid" id="flashProductGrid">
+      <p style="grid-column:1/-1; text-align:center; color:var(--gold-soft); padding:20px 0;">Đang tải sản phẩm...</p>
+    </div>
+  </div>
+</section>
+
+<section class="section story" id="cau-chuyen">
+  <div class="wrap">
+    <div class="story-art">
+      <svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="1.6">
+        <path d="M20 70c10-30 50-30 60 0" />
+        <circle cx="50" cy="35" r="12" fill="none"/>
+        <path d="M30 70h40" />
+      </svg>
+    </div>
+    <div>
+      <span class="eyebrow">Câu chuyện </span>
+      <h2 class="display">Giữ lửa cho từng làng nghề</h2>
+      <p>Bắt đầu từ những chuyến về quê của người sáng lập, mang theo vài hũ mắm, dăm cây chả biếu bạn bè thành phố. Từ đó, chúng tôi kết nối trực tiếp với hơn 40 hộ sản xuất thủ công tại các làng nghề, cam kết thu mua đúng giá, đúng mùa vụ.</p>
+      <p>Mỗi sản phẩm rời làng đều có tem truy xuất nguồn gốc, được đóng gói hút chân không để giữ trọn hương vị khi đến tay bạn, dù ở bất cứ đâu trên cả nước.</p>
+      <div class="stat-row">
+        <div><strong>40+</strong><span>Hộ sản xuất hợp tác</span></div>
+        <div><strong>12</strong><span>Tỉnh thành làng nghề</span></div>
+        <div><strong>18.000+</strong><span>Đơn hàng đã giao</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="tin-tuc">
+  <div class="wrap">
+    <div class="section-head">
+      <div><span class="eyebrow">Góc ẩm thực</span><h2 class="display">Chuyện quê, vị nhà</h2></div>
+      <a href="#" class="see-all">Xem tất cả bài viết →</a>
+    </div>
+    <div class="blog-grid">
+      <div class="blog-card">
+        <div class="blog-thumb"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="4" y="5" width="16" height="14" rx="1"/><path d="M4 15l4-4 3 3 5-6 4 5"/></svg></div>
+        <div class="blog-body"><span class="blog-tag">Mẹo vào bếp</span><h3>Cách chọn chả lụa ngon không cần nhìn nhãn mác</h3><p>Vài mẹo nhỏ từ người làng nghề để phân biệt chả lụa gói tay chuẩn vị.</p></div>
+      </div>
+      <div class="blog-card">
+        <div class="blog-thumb"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="8"/><path d="M12 8v4l3 2"/></svg></div>
+        <div class="blog-body"><span class="blog-tag">Văn hoá ẩm thực</span><h3>Vì sao nước mắm nhĩ luôn đắt hơn nước mắm thường?</h3><p>Tìm hiểu quy trình ủ chượp truyền thống kéo dài cả năm trời.</p></div>
+      </div>
+      <div class="blog-card">
+        <div class="blog-thumb"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 12h16M4 6h16M4 18h10"/></svg></div>
+        <div class="blog-body"><span class="blog-tag">Gợi ý quà biếu</span><h3>5 combo đặc sản biếu sếp, biếu đối tác dịp cuối năm</h3><p>Những set quà vừa sang trọng vừa mang đậm hương vị quê nhà.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="newsletter">
+  <div class="wrap">
+    <span class="eyebrow" style="color:var(--gold-soft)">Đừng bỏ lỡ</span>
+    <h2 class="display">Nhận ưu đãi &amp; đặc sản theo mùa</h2>
+    <p>Đăng ký để nhận mã giảm giá riêng và tin sản phẩm mới mỗi tuần.</p>
+    <form class="nl-form" onsubmit="return false;">
+      <input type="email" placeholder="Nhập email của bạn" required>
+      <button class="btn btn-gold" type="submit">Đăng ký</button>
+    </form>
+  </div>
+</section>
+
+<footer id="lien-he">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a href="#" class="brand">
+          <svg class="brand-mark" viewBox="0 0 48 48" fill="none">
+            <circle cx="24" cy="24" r="23" fill="#A6321B"/>
+            <path d="M14 30c0-8 4.5-14 10-14s10 6 10 14" stroke="#F3EAD9" stroke-width="2.4" fill="none" stroke-linecap="round"/>
+            <ellipse cx="24" cy="30" rx="12" ry="3.2" fill="#F3EAD9"/>
+          </svg>
+          <span>Hương Quê</span>
+        </a>
+        <p>Kết nối bạn với các làng nghề đặc sản khắp ba miền — chính gốc, đóng gói cẩn thận, giao tận nơi.</p>
+        <div class="socials">
+          <a href="#"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M13 22v-9h3l1-4h-4V6.5C13 5.3 13.5 4.5 15 4.5h2V1.2C16.6 1.1 15.4 1 14.2 1 11 1 9 3 9 6v3H6v4h3v9z"/></svg></a>
+          <a href="#"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 100 20 10 10 0 000-20zm3.9 7.3c-.6 3-2.6 5.7-5.4 6.9-.3-2.5-1.4-4.8-3.3-6.4 1.6.4 3.1 1.3 4.2 2.6.4-1.2 1.3-2.3 2.5-3 .6-.3 1.3-.1 2 .0z"/></svg></a>
+          <a href="#"><svg viewBox="0 0 24 24" fill="currentColor"><rect x="2" y="2" width="20" height="20" rx="5"/></svg></a>
+        </div>
+      </div>
+      <div class="foot-col">
+        <h4>Về Quý Hiệp Store</h4>
+        <ul>
+          <li><a href="#cau-chuyen">Câu chuyện thương hiệu</a></li>
+          <li><a href="#">Làng nghề hợp tác</a></li>
+          <li><a href="#">Tuyển dụng</a></li>
+          <li><a href="#">Liên hệ</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h4>Hỗ trợ khách hàng</h4>
+        <ul>
+          <li><a href="#">Chính sách bảo mật</a></li>
+          <li><a href="#">Chính sách đổi trả</a></li>
+          <li><a href="#">Giao hàng &amp; thanh toán</a></li>
+          <li><a href="#">Câu hỏi thường gặp</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h4>Liên hệ</h4>
+        <ul>
+          <li>☎ 0909 123 456</li>
+          <li>✉ hello@huongque.vn</li>
+          <li>📍 adress</li>
+          <li>🕒 8:00 – 20:00 hằng ngày</li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 Quý Hiệp — Đặc sản Bình Định.</span>
+      <span>💳 COD · Chuyển khoản · Momo · VNPay</span>
+    </div>
+  </div>
+</footer>
+
+<div class="modal-overlay" id="orderModal">
+  <div class="modal">
+    <div class="modal-head">
+      <h3>Đặt hàng nhanh</h3>
+      <span class="modal-close" id="modalClose">&times;</span>
+    </div>
+    <div class="modal-product" id="modalProductLabel">Sản phẩm: —</div>
+    <form class="modal-body" id="orderForm">
+      <div>
+        <label for="f-name">Họ và tên</label>
+        <input id="f-name" type="text" required placeholder="Nguyễn Văn A">
+      </div>
+      <div>
+        <label for="f-phone">Số điện thoại</label>
+        <input id="f-phone" type="tel" required placeholder="09xx xxx xxx">
+      </div>
+      <div>
+        <label for="f-address">Địa chỉ nhận hàng</label>
+        <input id="f-address" type="text" required placeholder="Số nhà, đường, quận/huyện, tỉnh/thành">
+      </div>
+      <div>
+        <label for="f-note">Ghi chú (tuỳ chọn)</label>
+        <textarea id="f-note" placeholder="Số lượng, thời gian giao hàng mong muốn..."></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary modal-submit">Gửi đơn hàng</button>
+      <div class="form-status" id="formStatus"></div>
+    </form>
+  </div>
+</div>
+
+<script>
+  // ============================================================
+  // ⚠️ CẤU HÌNH AIRTABLE — dán 3 giá trị này từ tài khoản Airtable của bạn
+  // (xem hướng dẫn lấy trong file HUONG-DAN-SETUP-AIRTABLE.md)
+  // ============================================================
+  const AIRTABLE_BASE_ID   = "appj81xEU695Aqlzj";        // dạng appXXXXXXXXXXXXXX
+  const AIRTABLE_TABLE     = "SanPham";                      // tên bảng chứa món ăn
+  const AIRTABLE_TOKEN     = "patmeBq9hnBV5XbTB.fb1ef26977792dd992a8e40c8cb31f9b419b082ec2a92205c80f9600042c111e"; // dạng patXXXXXXXXXXXXXX
+
+  function formatVND(n){
+    if (n === undefined || n === null || n === '') return '';
+    return Number(n).toLocaleString('vi-VN') + '₫';
+  }
+
+  function productCardHTML(rec){
+    const f = rec.fields;
+    const img = (f.Anh && f.Anh[0] && f.Anh[0].url) ? f.Anh[0].url : '';
+    const gia = f.Gia || 0;
+    const giaCu = f.GiaCu || null;
+    const off = giaCu && giaCu > gia ? Math.round((1 - gia/giaCu) * 100) : null;
+
+    return `
+      <div class="prod-card">
+        <div class="prod-thumb">
+          ${off ? `<span class="badge-off">-${off}%</span>` : ''}
+          ${f.VungMien ? `<span class="badge-region">${f.VungMien}</span>` : ''}
+          ${img ? `<img src="${img}" alt="${f.Ten || ''}" loading="lazy">` : `<span class="ph-fallback">Chưa có ảnh</span>`}
+        </div>
+        <div class="prod-body">
+          <h3>${f.Ten || 'Sản phẩm chưa đặt tên'}</h3>
+          <div class="prod-rating"><strong>★ ${f.DanhGia || '5.0'}</strong> · Đã bán ${f.DaBan || 0}</div>
+          <div class="price-row">
+            <span class="price-now">${formatVND(gia)}</span>
+            ${giaCu ? `<span class="price-old">${formatVND(giaCu)}</span>` : ''}
+          </div>
+          <button class="add-btn">Thêm vào giỏ</button>
+        </div>
+      </div>`;
+  }
+
+  async function loadProductsFromAirtable(){
+    const grid = document.getElementById('flashProductGrid');
+    if (AIRTABLE_BASE_ID.includes('DÁN_') || AIRTABLE_TOKEN.includes('DÁN_')) {
+      grid.innerHTML = `<p style="grid-column:1/-1; text-align:center; color:var(--gold-soft); padding:20px 0;">Chưa cấu hình Airtable — xem hướng dẫn trong HUONG-DAN-SETUP-AIRTABLE.md</p>`;
+      return;
+    }
+    try {
+      const url = `https://api.airtable.com/v0/${AIRTABLE_BASE_ID}/${encodeURIComponent(AIRTABLE_TABLE)}?filterByFormula=${encodeURIComponent('{HienThi}=1')}&sort[0][field]=ThuTu&sort[0][direction]=asc`;
+      const res = await fetch(url, { headers: { Authorization: `Bearer ${AIRTABLE_TOKEN}` } });
+      if (!res.ok) throw new Error('Airtable trả về lỗi ' + res.status);
+      const data = await res.json();
+
+      if (!data.records || data.records.length === 0) {
+        grid.innerHTML = `<p style="grid-column:1/-1; text-align:center; color:var(--gold-soft); padding:20px 0;">Chưa có sản phẩm nào được thêm trong Airtable.</p>`;
+        return;
+      }
+      grid.innerHTML = data.records.map(productCardHTML).join('');
+
+      // gắn lại sự kiện "Thêm vào giỏ" cho các card vừa render
+      grid.querySelectorAll('.add-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const card = btn.closest('.prod-card');
+          const name = card ? card.querySelector('h3').textContent : '';
+          openOrderModal(name);
+        });
+      });
+    } catch (err) {
+      grid.innerHTML = `<p style="grid-column:1/-1; text-align:center; color:var(--gold-soft); padding:20px 0;">Không tải được sản phẩm, vui lòng thử lại sau.</p>`;
+      console.error('Airtable load error:', err);
+    }
+  }
+
+  document.addEventListener('DOMContentLoaded', loadProductsFromAirtable);
+</script>
+
+<script>
+  // ⚠️ Dán URL Webhook lấy từ Make.com vào đây (xem hướng dẫn cấu hình Make bên dưới)
+  const ORDER_ENDPOINT = "DÁN_URL_WEBHOOK_MAKE_CỦA_BẠN_VÀO_ĐÂY";
+
+  const modal = document.getElementById('orderModal');
+  const modalProductLabel = document.getElementById('modalProductLabel');
+  const orderForm = document.getElementById('orderForm');
+  const formStatus = document.getElementById('formStatus');
+  let currentProduct = '';
+
+  function openOrderModal(productName){
+    currentProduct = productName || 'Chưa chọn sản phẩm cụ thể';
+    modalProductLabel.textContent = 'Sản phẩm: ' + currentProduct;
+    formStatus.className = 'form-status';
+    formStatus.textContent = '';
+    modal.classList.add('open');
+  }
+  function closeOrderModal(){
+    modal.classList.remove('open');
+  }
+
+  // Gắn sự kiện cho mọi nút "Thêm vào giỏ"
+  document.querySelectorAll('.add-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const card = btn.closest('.prod-card');
+      const name = card ? card.querySelector('h3').textContent : '';
+      openOrderModal(name);
+    });
+  });
+
+  document.getElementById('modalClose').addEventListener('click', closeOrderModal);
+  modal.addEventListener('click', (e) => { if(e.target === modal) closeOrderModal(); });
+
+  orderForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    if (ORDER_ENDPOINT.includes('DÁN_URL')) {
+      formStatus.className = 'form-status show err';
+      formStatus.textContent = 'Chưa cấu hình ORDER_ENDPOINT — xem hướng dẫn cấu hình Make.com';
+      return;
+    }
+
+    const payload = {
+      name: document.getElementById('f-name').value,
+      phone: document.getElementById('f-phone').value,
+      address: document.getElementById('f-address').value,
+      product: currentProduct,
+      note: document.getElementById('f-note').value
+    };
+
+    formStatus.className = 'form-status show';
+    formStatus.textContent = 'Đang gửi đơn hàng...';
+
+    try {
+      const res = await fetch(ORDER_ENDPOINT, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+      if (!res.ok) throw new Error('Webhook trả về lỗi: ' + res.status);
+      formStatus.className = 'form-status show ok';
+      formStatus.textContent = 'Đặt hàng thành công! Chúng tôi sẽ liên hệ xác nhận sớm.';
+      orderForm.reset();
+    } catch (err) {
+      formStatus.className = 'form-status show err';
+      formStatus.textContent = 'Có lỗi xảy ra, vui lòng thử lại hoặc gọi hotline 0909 123 456.';
+    }
+  });
+
+  // mobile menu (visual only)
+  document.querySelector('.burger').addEventListener('click', () => {
+    const nav = document.querySelector('nav.main');
+    nav.style.display = nav.style.display === 'flex' ? 'none' : 'flex';
+    nav.style.cssText += 'position:absolute; top:78px; left:0; right:0; background:#F3EAD9; flex-direction:column; padding:20px 24px; gap:16px; border-bottom:1px solid rgba(28,26,24,.12);';
+  });
+
+  // countdown timer
+  function pad(n){ return n.toString().padStart(2,'0'); }
+  let total = 5*3600 + 42*60 + 10;
+  setInterval(() => {
+    if(total <= 0) return;
+    total--;
+    const h = Math.floor(total/3600);
+    const m = Math.floor((total%3600)/60);
+    const s = total%60;
+    document.getElementById('t-h').textContent = pad(h);
+    document.getElementById('t-m').textContent = pad(m);
+    document.getElementById('t-s').textContent = pad(s);
+  }, 1000);
+</script>
+
+</body>
+</html>
