@@ -3,9 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Quý Hiệp — Đặc Sản Ba Miền Chính Gốc</title>
+<title>Hương Quê — Đặc Sản Ba Miền Chính Gốc</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root{
     --ink:#1C1A18;
@@ -124,6 +124,7 @@
   .cat-card{
     background:#fff; border:1px solid var(--line); border-radius:var(--radius); padding:22px 14px; text-align:center;
     transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease; cursor:pointer;
+    display:block;
   }
   .cat-card:hover{transform:translateY(-4px); box-shadow:var(--shadow); border-color:var(--gold);}
   .cat-card .cat-icon{width:46px; height:46px; margin:0 auto 12px; color:var(--lacquer);}
@@ -131,7 +132,7 @@
   .cat-card small{font-size:11px; color:#8a8477;}
 
   /* ===== Flash sale ===== */
-  .flash{background:var(--jade); color:var(--paper);}
+  .flash{background:var(--ink); color:var(--paper);}
   .flash .section-head h2{color:var(--paper);}
   .timer{display:flex; gap:8px; align-items:center;}
   .timer .box{background:rgba(243,234,217,.08); border:1px solid rgba(243,234,217,.2); border-radius:3px; padding:8px 12px; font-family:'Be Vietnam Pro'; font-weight:800; font-size:18px; min-width:46px; text-align:center;}
@@ -153,7 +154,7 @@
   .prod-thumb .ph-fallback{font-size:12px; color:#a89f8c; font-weight:600;}
   .badge-off{position:absolute; top:10px; left:10px; background:var(--lacquer); color:#fff; font-size:11px; font-weight:800; padding:4px 8px; border-radius:3px;}
   .badge-region{position:absolute; top:10px; right:10px; background:rgba(28,26,24,.75); color:var(--gold-soft); font-size:10.5px; font-weight:600; padding:4px 8px; border-radius:3px;}
-  .prod-body{padding:14px 16px 16px;}
+  .prod-body{padding:14px 16px 4px;}
   .prod-body h3{font-size:14.5px; font-weight:700; margin-bottom:6px; line-height:1.3; min-height:38px;}
   .prod-rating{font-size:12px; color:#8a8477; margin-bottom:8px;}
   .prod-rating strong{color:var(--gold); }
@@ -174,7 +175,7 @@
   .story h2{font-size:clamp(24px,3vw,32px); margin:14px 0 18px;}
   .story p{color:#4a453b; margin-bottom:14px; max-width:520px;}
   .stat-row{display:flex; gap:36px; margin-top:26px; flex-wrap:wrap;}
-  .stat-row div strong{font-family:'Be Vietnam Pro'; font-size:28px; display:block; color:var(--lacquer);}
+  .stat-row div strong{font-family:'Be Vietnam Pro'; font-weight:800; font-size:28px; display:block; color:var(--lacquer);}
   .stat-row div span{font-size:12.5px; color:#5a5548;}
 
   /* ===== Blog ===== */
@@ -208,14 +209,14 @@
   .socials a{width:34px; height:34px; border:1px solid rgba(243,234,217,.2); border-radius:50%; display:flex; align-items:center; justify-content:center;}
   .socials svg{width:15px; height:15px;}
 
-  /* ===== Order modal ===== */
+  /* ===== Order modal (chọn kênh liên hệ) ===== */
   .modal-overlay{
     position:fixed; inset:0; background:rgba(28,26,24,.55); z-index:100;
     display:none; align-items:center; justify-content:center; padding:20px;
   }
   .modal-overlay.open{display:flex;}
   .modal{
-    background:var(--paper); border-radius:6px; width:100%; max-width:440px; max-height:90vh; overflow-y:auto;
+    background:var(--paper); border-radius:6px; width:100%; max-width:400px; max-height:90vh; overflow-y:auto;
     box-shadow:0 24px 60px rgba(0,0,0,.3); position:relative;
   }
   .modal-head{padding:22px 24px 6px; display:flex; justify-content:space-between; align-items:flex-start;}
@@ -223,19 +224,21 @@
   .modal-close{cursor:pointer; font-size:20px; line-height:1; color:#8a8477; padding:4px;}
   .modal-close:hover{color:var(--ink);}
   .modal-product{padding:0 24px; font-size:13.5px; color:var(--lacquer); font-weight:700; margin-bottom:6px;}
-  .modal-body{padding:10px 24px 24px; display:flex; flex-direction:column; gap:12px;}
-  .modal-body label{font-size:12.5px; font-weight:700; color:#4a453b; margin-bottom:4px; display:block;}
-  .modal-body input, .modal-body textarea{
-    width:100%; padding:11px 13px; border:1.5px solid var(--line); border-radius:4px; font-family:'Inter'; font-size:14px;
-    background:#fff;
+  .modal-body{padding:14px 24px 24px; display:flex; flex-direction:column; gap:10px;}
+  .contact-option{
+    display:flex; align-items:center; gap:14px; padding:14px 16px; border-radius:6px; border:1.5px solid var(--line);
+    background:#fff; cursor:pointer; text-decoration:none; color:var(--ink); transition:border-color .15s ease, transform .15s ease;
   }
-  .modal-body input:focus, .modal-body textarea:focus{outline:none; border-color:var(--gold);}
-  .modal-body textarea{resize:vertical; min-height:60px;}
-  .modal-submit{margin-top:6px; width:100%; justify-content:center;}
-  .form-status{font-size:13px; font-weight:600; padding:10px 12px; border-radius:4px; display:none;}
-  .form-status.show{display:block;}
-  .form-status.ok{background:rgba(63,91,74,.12); color:var(--jade);}
-  .form-status.err{background:rgba(166,50,27,.1); color:var(--lacquer);}
+  .contact-option:hover{border-color:var(--gold); transform:translateY(-1px);}
+  .contact-option .ico{
+    width:40px; height:40px; border-radius:50%; display:flex; align-items:center; justify-content:center;
+    flex-shrink:0; font-size:18px;
+  }
+  .contact-option .ico.zalo{background:#e6f2fc; color:#0068ff;}
+  .contact-option .ico.fb{background:#e8eefc; color:#0866ff;}
+  .contact-option .ico.phone{background:rgba(63,91,74,.12); color:var(--jade);}
+  .contact-option .txt strong{display:block; font-size:14.5px; font-weight:700;}
+  .contact-option .txt span{font-size:12.5px; color:#8a8477;}
 
   /* ===== Responsive ===== */
   @media (max-width:980px){
@@ -275,7 +278,7 @@
         <ellipse cx="24" cy="30" rx="12" ry="3.2" fill="#F3EAD9"/>
         <path d="M20 16c0-2.2 1.8-4 4-4s4 1.8 4 4" stroke="#E4C766" stroke-width="2" stroke-linecap="round"/>
       </svg>
-      <span>Quý Hiệp Store<small>Đặc sản quê nhà</small></span>
+      <span>Hương Quê<small>Đặc sản quê nhà</small></span>
     </a>
     <nav class="main">
       <a href="#danh-muc">Sản phẩm</a>
@@ -302,7 +305,7 @@
     <div>
       <span class="eyebrow">Từ bếp làng đến bàn ăn nhà bạn</span>
       <h1 class="display">Đặc sản quê,<br><em>gói trọn</em> yêu thương</h1>
-      <p class="lede">Quý Hiệp tuyển chọn từng mẻ chả, hũ mắm, ché rượu từ các làng nghề lâu đời khắp ba miền — đóng gói cẩn thận, gửi thẳng đến tay bạn trong 24–48 giờ.</p>
+      <p class="lede">Hương Quê tuyển chọn từng mẻ chả, hũ mắm, ché rượu từ các làng nghề lâu đời khắp ba miền — đóng gói cẩn thận, gửi thẳng đến tay bạn trong 24–48 giờ.</p>
       <div class="hero-ctas">
         <a href="#danh-muc" class="btn btn-primary">Khám phá sản phẩm →</a>
         <a href="#" class="btn btn-ghost" onclick="openOrderModal('Combo quà biếu Tết'); return false;">Combo quà biếu Tết</a>
@@ -315,12 +318,14 @@
     </div>
     <div class="hero-art">
       <div class="plate">
-        <svg width="52%" height="52%" viewBox="0 0 100 100" fill="none">
-          <ellipse cx="50" cy="82" rx="34" ry="6" fill="rgba(28,26,24,.08)"/>
-          <path d="M32 30h36l-3 44a6 6 0 01-6 5.5H41a6 6 0 01-6-5.5z" fill="#C97B4A"/>
-          <path d="M30 30h40l-1.5 8h-37z" fill="#7C2313"/>
-          <rect x="46" y="14" width="8" height="18" rx="3" fill="#7C2313"/>
-        </svg>
+        <div id="banner-slot-hero" style="width:100%; height:100%; display:flex; align-items:center; justify-content:center; position:absolute; inset:0; border-radius:50%; overflow:hidden;">
+          <svg width="52%" height="52%" viewBox="0 0 100 100" fill="none">
+            <ellipse cx="50" cy="82" rx="34" ry="6" fill="rgba(28,26,24,.08)"/>
+            <path d="M32 30h36l-3 44a6 6 0 01-6 5.5H41a6 6 0 01-6-5.5z" fill="#C97B4A"/>
+            <path d="M30 30h40l-1.5 8h-37z" fill="#7C2313"/>
+            <rect x="46" y="14" width="8" height="18" rx="3" fill="#7C2313"/>
+          </svg>
+        </div>
         <div class="seal">
           <div class="seal-inner"><span class="big">100%</span>Chính gốc<br>làng nghề</div>
         </div>
@@ -341,15 +346,15 @@
   <div class="wrap">
     <div class="section-head">
       <div><span class="eyebrow">Danh mục</span><h2 class="display">Chọn theo vùng miền</h2></div>
-      <a href="#" class="see-all">Xem tất cả sản phẩm →</a>
+      <a href="/san-pham" class="see-all">Xem tất cả sản phẩm →</a>
     </div>
     <div class="cat-grid">
-      <div class="cat-card"><svg class="cat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="4" y="9" width="16" height="10" rx="1.5"/><path d="M8 9V6a4 4 0 018 0v3"/></svg><span>Chả &amp; Nem</span><small>Bình Định, Huế</small></div>
-      <div class="cat-card"><svg class="cat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M7 3h10l1 6a6 6 0 01-12 0z"/><path d="M12 15v6"/><path d="M9 21h6"/></svg><span>Nước Mắm</span><small>Phan Thiết</small></div>
-      <div class="cat-card"><svg class="cat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 8l7-5 7 5-7 5z"/><path d="M5 8v8l7 5 7-5V8"/></svg><span>Bánh Tráng</span><small>Phú Yên</small></div>
-      <div class="cat-card"><svg class="cat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M9 3h6l1 5a4 4 0 01-8 0z"/><path d="M12 12v9"/></svg><span>Rượu Quê</span><small>Bàu Đá</small></div>
-      <div class="cat-card"><svg class="cat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="8"/><path d="M12 8v8M8 12h8"/></svg><span>Mứt &amp; Kẹo</span><small>Quảng Ngãi</small></div>
-      <div class="cat-card"><svg class="cat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 12c4-6 12-6 16 0"/><path d="M6 12v6h12v-6"/></svg><span>Trà &amp; Mật Ong</span><small>Tây Nguyên</small></div>
+      <a href="/danh-muc/cha-nem" class="cat-card"><svg class="cat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="4" y="9" width="16" height="10" rx="1.5"/><path d="M8 9V6a4 4 0 018 0v3"/></svg><span>Chả &amp; Nem</span><small>Bình Định, Huế</small></a>
+      <a href="/danh-muc/nuoc-mam" class="cat-card"><svg class="cat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M7 3h10l1 6a6 6 0 01-12 0z"/><path d="M12 15v6"/><path d="M9 21h6"/></svg><span>Nước Mắm</span><small>Phan Thiết</small></a>
+      <a href="/danh-muc/banh-trang" class="cat-card"><svg class="cat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 8l7-5 7 5-7 5z"/><path d="M5 8v8l7 5 7-5V8"/></svg><span>Bánh Tráng</span><small>Phú Yên</small></a>
+      <a href="/danh-muc/ruou-que" class="cat-card"><svg class="cat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M9 3h6l1 5a4 4 0 01-8 0z"/><path d="M12 12v9"/></svg><span>Rượu Quê</span><small>Bàu Đá</small></a>
+      <a href="/danh-muc/mut-keo" class="cat-card"><svg class="cat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="8"/><path d="M12 8v8M8 12h8"/></svg><span>Mứt &amp; Kẹo</span><small>Quảng Ngãi</small></a>
+      <a href="/danh-muc/tra-mat-ong" class="cat-card"><svg class="cat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 12c4-6 12-6 16 0"/><path d="M6 12v6h12v-6"/></svg><span>Trà &amp; Mật Ong</span><small>Tây Nguyên</small></a>
     </div>
   </div>
 </section>
@@ -375,7 +380,7 @@
 
 <section class="section story" id="cau-chuyen">
   <div class="wrap">
-    <div class="story-art">
+    <div class="story-art" id="banner-slot-story">
       <svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="1.6">
         <path d="M20 70c10-30 50-30 60 0" />
         <circle cx="50" cy="35" r="12" fill="none"/>
@@ -383,9 +388,9 @@
       </svg>
     </div>
     <div>
-      <span class="eyebrow">Câu chuyện </span>
+      <span class="eyebrow">Câu chuyện Hương Quê</span>
       <h2 class="display">Giữ lửa cho từng làng nghề</h2>
-      <p>Bắt đầu từ những chuyến về quê của người sáng lập, mang theo vài hũ mắm, dăm cây chả biếu bạn bè thành phố. Từ đó, chúng tôi kết nối trực tiếp với hơn 40 hộ sản xuất thủ công tại các làng nghề, cam kết thu mua đúng giá, đúng mùa vụ.</p>
+      <p>Hương Quê bắt đầu từ những chuyến về quê của người sáng lập, mang theo vài hũ mắm, dăm cây chả biếu bạn bè thành phố. Từ đó, chúng tôi kết nối trực tiếp với hơn 40 hộ sản xuất thủ công tại các làng nghề, cam kết thu mua đúng giá, đúng mùa vụ.</p>
       <p>Mỗi sản phẩm rời làng đều có tem truy xuất nguồn gốc, được đóng gói hút chân không để giữ trọn hương vị khi đến tay bạn, dù ở bất cứ đâu trên cả nước.</p>
       <div class="stat-row">
         <div><strong>40+</strong><span>Hộ sản xuất hợp tác</span></div>
@@ -451,7 +456,7 @@
         </div>
       </div>
       <div class="foot-col">
-        <h4>Về Quý Hiệp Store</h4>
+        <h4>Về Hương Quê</h4>
         <ul>
           <li><a href="#cau-chuyen">Câu chuyện thương hiệu</a></li>
           <li><a href="#">Làng nghề hợp tác</a></li>
@@ -473,13 +478,13 @@
         <ul>
           <li>☎ 0909 123 456</li>
           <li>✉ hello@huongque.vn</li>
-          <li>📍 adress</li>
+          <li>📍 88 Đường Ẩm Thực, Q. Bình Thạnh, TP.HCM</li>
           <li>🕒 8:00 – 20:00 hằng ngày</li>
         </ul>
       </div>
     </div>
     <div class="foot-bottom">
-      <span>© 2026 Quý Hiệp — Đặc sản Bình Định.</span>
+      <span>© 2026 Hương Quê — Đặc sản quê nhà chính gốc.</span>
       <span>💳 COD · Chuyển khoản · Momo · VNPay</span>
     </div>
   </div>
@@ -492,26 +497,20 @@
       <span class="modal-close" id="modalClose">&times;</span>
     </div>
     <div class="modal-product" id="modalProductLabel">Sản phẩm: —</div>
-    <form class="modal-body" id="orderForm">
-      <div>
-        <label for="f-name">Họ và tên</label>
-        <input id="f-name" type="text" required placeholder="Nguyễn Văn A">
-      </div>
-      <div>
-        <label for="f-phone">Số điện thoại</label>
-        <input id="f-phone" type="tel" required placeholder="09xx xxx xxx">
-      </div>
-      <div>
-        <label for="f-address">Địa chỉ nhận hàng</label>
-        <input id="f-address" type="text" required placeholder="Số nhà, đường, quận/huyện, tỉnh/thành">
-      </div>
-      <div>
-        <label for="f-note">Ghi chú (tuỳ chọn)</label>
-        <textarea id="f-note" placeholder="Số lượng, thời gian giao hàng mong muốn..."></textarea>
-      </div>
-      <button type="submit" class="btn btn-primary modal-submit">Gửi đơn hàng</button>
-      <div class="form-status" id="formStatus"></div>
-    </form>
+    <div class="modal-body">
+      <a href="#" id="contactZalo" class="contact-option" target="_blank" rel="noopener">
+        <span class="ico zalo">💬</span>
+        <span class="txt"><strong>Nhắn Zalo</strong><span>Chat trực tiếp với shop qua Zalo</span></span>
+      </a>
+      <a href="#" id="contactMessenger" class="contact-option" target="_blank" rel="noopener">
+        <span class="ico fb">📩</span>
+        <span class="txt"><strong>Nhắn Messenger</strong><span>Chat qua Fanpage Facebook</span></span>
+      </a>
+      <a href="#" id="contactPhone" class="contact-option">
+        <span class="ico phone">📞</span>
+        <span class="txt"><strong>Gọi điện đặt hàng</strong><span>Gọi trực tiếp hotline</span></span>
+      </a>
+    </div>
   </div>
 </div>
 
@@ -535,21 +534,26 @@
     const gia = f.Gia || 0;
     const giaCu = f.GiaCu || null;
     const off = giaCu && giaCu > gia ? Math.round((1 - gia/giaCu) * 100) : null;
+    const link = f.Slug ? `/san-pham/${f.Slug}` : '#';
 
     return `
       <div class="prod-card">
-        <div class="prod-thumb">
-          ${off ? `<span class="badge-off">-${off}%</span>` : ''}
-          ${f.VungMien ? `<span class="badge-region">${f.VungMien}</span>` : ''}
-          ${img ? `<img src="${img}" alt="${f.Ten || ''}" loading="lazy">` : `<span class="ph-fallback">Chưa có ảnh</span>`}
-        </div>
-        <div class="prod-body">
-          <h3>${f.Ten || 'Sản phẩm chưa đặt tên'}</h3>
-          <div class="prod-rating"><strong>★ ${f.DanhGia || '5.0'}</strong> · Đã bán ${f.DaBan || 0}</div>
-          <div class="price-row">
-            <span class="price-now">${formatVND(gia)}</span>
-            ${giaCu ? `<span class="price-old">${formatVND(giaCu)}</span>` : ''}
+        <a href="${link}" style="display:block; color:inherit;">
+          <div class="prod-thumb">
+            ${off ? `<span class="badge-off">-${off}%</span>` : ''}
+            ${f.VungMien ? `<span class="badge-region">${f.VungMien}</span>` : ''}
+            ${img ? `<img src="${img}" alt="${f.Ten || ''}" loading="lazy">` : `<span class="ph-fallback">Chưa có ảnh</span>`}
           </div>
+          <div class="prod-body">
+            <h3>${f.Ten || 'Sản phẩm chưa đặt tên'}</h3>
+            <div class="prod-rating"><strong>★ ${f.DanhGia || '5.0'}</strong> · Đã bán ${f.DaBan || 0}</div>
+            <div class="price-row">
+              <span class="price-now">${formatVND(gia)}</span>
+              ${giaCu ? `<span class="price-old">${formatVND(giaCu)}</span>` : ''}
+            </div>
+          </div>
+        </a>
+        <div style="padding:0 16px 16px;">
           <button class="add-btn">Thêm vào giỏ</button>
         </div>
       </div>`;
@@ -588,23 +592,68 @@
   }
 
   document.addEventListener('DOMContentLoaded', loadProductsFromAirtable);
+
+  // ============================================================
+  // BANNER — tải ảnh banner từ bảng "Banner" trong Airtable
+  // ============================================================
+  async function loadBannersFromAirtable(){
+    if (AIRTABLE_BASE_ID.includes('DÁN_') || AIRTABLE_TOKEN.includes('DÁN_')) return; // im lặng, giữ nguyên hình mặc định
+
+    try {
+      const url = `https://api.airtable.com/v0/${AIRTABLE_BASE_ID}/Banner`;
+      const res = await fetch(url, { headers: { Authorization: `Bearer ${AIRTABLE_TOKEN}` } });
+      if (!res.ok) return; // chưa có bảng Banner hoặc lỗi -> im lặng giữ ảnh mặc định
+      const data = await res.json();
+      if (!data.records) return;
+
+      data.records.forEach(rec => {
+        const f = rec.fields;
+        const slot = f.ViTri;
+        const img = (f.Anh && f.Anh[0] && f.Anh[0].url) ? f.Anh[0].url : null;
+        if (!slot || !img) return;
+
+        const target = document.getElementById('banner-slot-' + slot);
+        if (target) {
+          target.innerHTML = `<img src="${img}" alt="Banner ${slot}" loading="lazy" style="width:100%; height:100%; object-fit:cover; border-radius:inherit;">`;
+        }
+      });
+    } catch (err) {
+      console.error('Banner load error:', err);
+      // lỗi thì cứ giữ nguyên ảnh minh hoạ mặc định, không làm hỏng trang
+    }
+  }
+
+  document.addEventListener('DOMContentLoaded', loadBannersFromAirtable);
 </script>
 
 <script>
-  // ⚠️ Dán URL Webhook lấy từ Make.com vào đây (xem hướng dẫn cấu hình Make bên dưới)
-  const ORDER_ENDPOINT = "DÁN_URL_WEBHOOK_MAKE_CỦA_BẠN_VÀO_ĐÂY";
+  // ============================================================
+  // ⚠️ CẤU HÌNH KÊNH LIÊN HỆ — thay bằng thông tin thật của bạn
+  // ============================================================
+  const ZALO_PHONE       = "0847587948";              // số điện thoại dùng Zalo, chỉ nhập số, không khoảng trắng/dấu
+  const FACEBOOK_PAGE    = "ten.fanpage.cua.ban";      // username của Fanpage (phần sau facebook.com/)
+  const HOTLINE_PHONE    = "0847587948";               // số điện thoại hotline gọi trực tiếp
 
   const modal = document.getElementById('orderModal');
   const modalProductLabel = document.getElementById('modalProductLabel');
-  const orderForm = document.getElementById('orderForm');
-  const formStatus = document.getElementById('formStatus');
-  let currentProduct = '';
+  const zaloBtn = document.getElementById('contactZalo');
+  const fbBtn = document.getElementById('contactMessenger');
+  const phoneBtn = document.getElementById('contactPhone');
 
   function openOrderModal(productName){
-    currentProduct = productName || 'Chưa chọn sản phẩm cụ thể';
-    modalProductLabel.textContent = 'Sản phẩm: ' + currentProduct;
-    formStatus.className = 'form-status';
-    formStatus.textContent = '';
+    const product = productName || 'sản phẩm trên Hương Quê';
+    modalProductLabel.textContent = 'Sản phẩm: ' + product;
+
+    // Zalo: mở chat với số điện thoại (Zalo không hỗ trợ tự điền sẵn nội dung tin nhắn)
+    zaloBtn.href = `https://zalo.me/${ZALO_PHONE}`;
+
+    // Messenger: mở chat với Fanpage, tự điền sẵn nội dung hỏi mua sản phẩm
+    const fbText = encodeURIComponent(`Chào shop, mình muốn đặt: ${product}`);
+    fbBtn.href = `https://m.me/${FACEBOOK_PAGE}?text=${fbText}`;
+
+    // Gọi điện trực tiếp
+    phoneBtn.href = `tel:${HOTLINE_PHONE}`;
+
     modal.classList.add('open');
   }
   function closeOrderModal(){
@@ -622,42 +671,6 @@
 
   document.getElementById('modalClose').addEventListener('click', closeOrderModal);
   modal.addEventListener('click', (e) => { if(e.target === modal) closeOrderModal(); });
-
-  orderForm.addEventListener('submit', async (e) => {
-    e.preventDefault();
-
-    if (ORDER_ENDPOINT.includes('DÁN_URL')) {
-      formStatus.className = 'form-status show err';
-      formStatus.textContent = 'Chưa cấu hình ORDER_ENDPOINT — xem hướng dẫn cấu hình Make.com';
-      return;
-    }
-
-    const payload = {
-      name: document.getElementById('f-name').value,
-      phone: document.getElementById('f-phone').value,
-      address: document.getElementById('f-address').value,
-      product: currentProduct,
-      note: document.getElementById('f-note').value
-    };
-
-    formStatus.className = 'form-status show';
-    formStatus.textContent = 'Đang gửi đơn hàng...';
-
-    try {
-      const res = await fetch(ORDER_ENDPOINT, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload)
-      });
-      if (!res.ok) throw new Error('Webhook trả về lỗi: ' + res.status);
-      formStatus.className = 'form-status show ok';
-      formStatus.textContent = 'Đặt hàng thành công! Chúng tôi sẽ liên hệ xác nhận sớm.';
-      orderForm.reset();
-    } catch (err) {
-      formStatus.className = 'form-status show err';
-      formStatus.textContent = 'Có lỗi xảy ra, vui lòng thử lại hoặc gọi hotline 0909 123 456.';
-    }
-  });
 
   // mobile menu (visual only)
   document.querySelector('.burger').addEventListener('click', () => {
