@@ -4,7 +4,14 @@
   "compatibility_date": "2025-01-01",
   "main": "src/index.js",
   "assets": {
-    "directory": "./",
+    "directory": "./public",
     "binding": "ASSETS"
-  }
+  },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "huong-que-db",
+      "database_id": "a842df27-6617-4020-8417-05086e08dff4"
+    }
+  ]
 }
